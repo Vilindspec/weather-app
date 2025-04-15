@@ -1,0 +1,159 @@
+/* Reset & Base */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
+  color: #fff;
+  text-align: center;
+}
+
+.container {
+  max-width: 500px;
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
+.logo {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+/* Search Bar */
+.search {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.search input {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  width: 60%;
+  min-width: 180px;
+}
+
+.search button {
+  padding: 10px 20px;
+  background: #fff;
+  color: #2193b0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Weather Card */
+.card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+}
+
+.card h2 {
+  margin-bottom: 10px;
+}
+
+.temp {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.desc {
+  text-transform: capitalize;
+  font-size: 1.2rem;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .search {
+    flex-direction: column;
+  }
+
+  .search input {
+    width: 100%;
+  }
+
+  .search button {
+    width: 100%;
+  }
+}
+/* DARK MODE */
+.container.dark {
+  background: #121212;
+  color: #ffffff;
+}
+
+.container.dark .card {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.toggle-btn {
+  margin-top: 10px;
+  background: #ffffff33;
+  border: none;
+  padding: 8px 14px;
+  color: #fff;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.forecast-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 0.9rem;
+}
+.theme-light {
+  background: linear-gradient(to right, #2193b0, #6dd5ed);
+  color: #fff;
+}
+
+.theme-sunset {
+  background: linear-gradient(to right, #ff6a00, #ee0979);
+  color: #fff;
+}
+
+.theme-midnight {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #fff;
+}
+.recent-searches {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.recent-searches button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  background: #ffffff33;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}

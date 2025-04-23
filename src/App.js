@@ -200,7 +200,7 @@ function App() {
       )}
 
       <footer>
-        <p>&copy;Motunrayo 2025 React Weather App _All Rights Reserved.</p>
+        <p>&copy;2025 Vilindspec_All Rights Reserved.</p>
       </footer>
     </div>
   );

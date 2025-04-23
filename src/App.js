@@ -10,7 +10,6 @@ function App() {
   const [forecast, setForecast] = useState([]);
   const [error, setError] = useState("");
   const [theme, setTheme] = useState("light");
-  const [darkMode, setDarkMode] = useState(false);
   const [language, setLanguage] = useState("en");
   const [recent, setRecent] = useState(
     () => JSON.parse(localStorage.getItem("recentCities")) || []
@@ -31,18 +30,33 @@ function App() {
         })
         .catch((err) => console.error(err));
     });
-  }, [language]); // ✅ Add `language` here
+  }, [language]); 
   
 
   // Get forecast data
   const getForecast = async (lat, lon) => {
     const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric&cnt=5`
+      `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
     );
     const data = await res.json();
-    setForecast(data.list);
+  
+    const dailyForecast = [];
+    const forecastMap = {};
+  
+    data.list.forEach((item) => {
+      const date = item.dt_txt.split(' ')[0];
+      if (!forecastMap[date] && item.dt_txt.includes('12:00:00')) {
+        forecastMap[date] = item;
+      }
+    });
+  
+    for (let date in forecastMap) {
+      dailyForecast.push(forecastMap[date]);
+    }
+  
+    setForecast(dailyForecast);
   };
-
+  
   // Get weather by city name
   const getWeather = async () => {
     if (!city) return;
@@ -77,16 +91,27 @@ function App() {
 
   // Voice input
   const handleVoiceInput = () => {
+    if (!('webkitSpeechRecognition' in window)) {
+      setError('Speech recognition not supported in this browser.');
+      return;
+    }
+  
     const recognition = new window.webkitSpeechRecognition();
     recognition.lang = language;
     recognition.start();
-
+  
     recognition.onresult = (event) => {
       const spokenCity = event.results[0][0].transcript;
       setCity(spokenCity);
       getWeather(spokenCity);
     };
+  
+    recognition.onerror = (event) => {
+      console.error('Speech recognition error', event.error);
+      setError('Microphone error: ' + event.error);
+    };
   };
+  
 
   // Ask for notification permission once
   useEffect(() => {
@@ -101,11 +126,7 @@ function App() {
         <img src={logo} alt="Weather Logo" className="logo" />
         <h1>React Weather App</h1>
 
-        <button onClick={() => setDarkMode(!darkMode)} className="toggle-btn">
-          {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
-        </button>
-
-        <button
+               <button
           onClick={() =>
             setTheme(
               theme === "light" ? "sunset" : theme === "sunset" ? "midnight" : "light"
@@ -113,7 +134,7 @@ function App() {
           }
           className="theme-toggle"
         >
-          🎨 Switch Theme
+          Switch Theme
         </button>
       </header>
 
@@ -179,7 +200,7 @@ function App() {
       )}
 
       <footer>
-        <p>&copy; 2025 React Weather</p>
+        <p>&copy;Motunrayo 2025 React Weather App _All Rights Reserved.</p>
       </footer>
     </div>
   );

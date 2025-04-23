@@ -23,6 +23,7 @@ header h1 {
   font-size: 2rem;
 }
 
+
 /* Search Bar */
 .search {
   display: flex;
@@ -157,3 +158,47 @@ footer {
   color: #fff;
   cursor: pointer;
 }
+
+.app.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.app.dark {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+.theme-light {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+.theme-dark {
+  background-color: #212529;
+  color: #f8f9fa;
+}
+
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #4fa94d;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+

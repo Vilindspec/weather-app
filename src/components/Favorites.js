@@ -17,6 +17,12 @@ function Favorites({ onSelect }) {
     <div>
       <h3>Favorites</h3>
       <ul>
-        {favorites
-::contentReference[oaicite:0]{index=0}
- 
+        {favorites.map((city, index) => (
+          <li key={index} onClick={() => handleSelect(city)}>
+            {city}
+          </li>
+        ))}
+      </ul>
+      </div>
+  )}
+  export default Favorites;

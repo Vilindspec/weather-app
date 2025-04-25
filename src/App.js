@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import logo from "./sun.avif";
-import ForecastCard from "./components/ForecastCard";
+import ForecastCard from './components/ForecastCard.js';
 
 const apiKey = "37391e49cd663e7ef8ada10f9bd5f559";
 
@@ -226,3 +226,4 @@ function App() {
 
 
 export default App;
+

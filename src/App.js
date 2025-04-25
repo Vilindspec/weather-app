@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 import logo from "./sun.avif";
+import ForecastCard from "./components/ForecastCard";
 
 const apiKey = "37391e49cd663e7ef8ada10f9bd5f559";
 
@@ -181,7 +182,7 @@ function App() {
         </section>
       )}
 
-      {forecast.length > 0 && (
+      {/* {forecast.length > 0 && (
         <section className="forecast-grid">
           {forecast.map((item, index) => (
             <div className="forecast-card" key={index}>
@@ -197,7 +198,24 @@ function App() {
             </div>
           ))}
         </section>
-      )}
+      )} */}
+
+
+
+{forecast.length > 0 && (
+  <section className="forecast-grid">
+    {forecast.map((item, index) => (
+      <ForecastCard
+        key={index}
+        date={new Date(item.dt_txt).toLocaleDateString()}
+        icon={item.weather[0].icon}
+        temp={item.main.temp}
+        description={item.weather[0].description}
+      />
+    ))}
+  </section>
+)}
+
 
       <footer>
         <p>&copy;2025 Vilindspec_All Rights Reserved.</p>
@@ -205,5 +223,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;

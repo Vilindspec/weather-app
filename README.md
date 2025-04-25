@@ -18,9 +18,9 @@ Dependencies
 - Leaflet.js
 
 Build and Deploy Instructions
-1. Clone the repository: git clone https://github.com/your-username/weather-app.git
+1. Clone the repository: git clone https://github.com/Vilindspec/weather-app.git
 2. Install dependencies: npm install or yarn install
-3. Create a .env file and add your OpenWeatherMap API key: REACT_APP_OPENWEATHERMAP_API_KEY=your-api-key
+3. Create a new file named `.env` in the root directory of your project, and add your OpenWeatherMap API key: REACT_APP_OPENWEATHERMAP_API_KEY=YOUR_OPENWEATHERMAP_API_KEY
 4. Build the app: npm run build or yarn build
 5. Deploy the app: npm run deploy or yarn deploy (uses Vercel)
 
